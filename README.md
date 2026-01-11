@@ -44,12 +44,12 @@ Shall I proceed?
 
 ### One-Line Install
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/claude-boris/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/llcoolblaze/claude-boris/main/install.sh | bash
 ```
 
 ### Manual Install
 ```bash
-git clone https://github.com/YOUR_USERNAME/claude-boris.git
+git clone https://github.com/llcoolblaze/claude-boris.git
 cd claude-boris
 ./install.sh /path/to/your/project
 ```
