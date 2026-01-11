@@ -4,7 +4,7 @@
 # Complete Installation Script with Memory Bank & Gap Solutions
 #
 # Usage:
-#   curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/claude-boris/main/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/llcoolblaze/claude-boris/main/install.sh | bash
 #   OR
 #   ./install.sh [target-directory]
 #
@@ -20,7 +20,7 @@
 set -e
 
 VERSION="2.0.0"
-REPO="YOUR_USERNAME/claude-boris"
+REPO="llcoolblaze/claude-boris"
 
 # Colors
 RED='\033[0;31m'

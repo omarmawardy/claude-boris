@@ -30,7 +30,7 @@ Ready to code? Here's how:
 
 ```bash
 # Clone your fork
-git clone https://github.com/YOUR_USERNAME/claude-boris.git
+git clone https://github.com/llcoolblaze/claude-boris.git
 cd claude-boris
 
 # Create a branch
