@@ -7,13 +7,16 @@ description: End session by saving Memory Bank state, creating session summary, 
 ## Current State
 
 ### Uncommitted Changes
+
 !`git status --short 2>/dev/null || echo "Not a git repo"`
 !`git diff --stat 2>/dev/null | tail -10`
 
 ### Commits This Session
+
 !`git log --oneline --since="8 hours ago" 2>/dev/null | head -10`
 
 ### Files Modified Recently
+
 !`git diff --name-only HEAD~5 2>/dev/null | head -15 || echo ""`
 
 ---
@@ -25,6 +28,7 @@ description: End session by saving Memory Bank state, creating session summary, 
 **If uncommitted changes exist:**
 
 Option A - Ready to commit:
+
 ```bash
 # Verify first
 /verify-all
@@ -33,12 +37,14 @@ Option A - Ready to commit:
 ```
 
 Option B - Work in progress:
+
 ```bash
 # Create checkpoint
 git stash push -m "session-end-$(date +%Y%m%d-%H%M%S)"
 ```
 
 Option C - Save as WIP commit:
+
 ```bash
 git add -A
 git commit -m "wip: session checkpoint - [brief description]"
@@ -49,17 +55,20 @@ git commit -m "wip: session checkpoint - [brief description]"
 Analyze this session and document:
 
 **What Was Accomplished**
+
 - List completed tasks
 - Note features implemented
 - Record bugs fixed
 - Count commits made
 
 **Key Decisions Made**
+
 - Any architectural choices
 - Technical trade-offs decided
 - Patterns established
 
 **Files Modified**
+
 - List significant file changes
 - Note new files created
 - Flag deleted files
@@ -67,55 +76,68 @@ Analyze this session and document:
 ### 3. Update Memory Bank
 
 **Update `.claude/memory/activeContext.md`:**
+
 - Current working state
 - Files in focus
 - Open questions
 - Next steps
 
 **Update `.claude/memory/progress.md`:**
+
 - Mark completed items as done
 - Add newly discovered tasks
 - Update in-progress items
 
 **Append to `.claude/memory/sessionHistory.md`:**
+
 ```markdown
 ## [Today's Date] [Time] - Session Summary
 
 ### Duration
+
 [Approximate session length]
 
 ### What Was Accomplished
+
 - [Task 1]
 - [Task 2]
 
 ### Key Decisions Made
+
 - [Decision if any]
 
 ### Files Modified
+
 - `path/file.ts` - [change summary]
 
 ### Commits Created
+
 - `SHA` message
 
 ### Context for Next Session
+
 [Critical info the next Claude needs]
 
 ### Open Items
+
 - [ ] [Unfinished work]
 - [ ] [Questions to resolve]
 ```
 
 **Update `.claude/memory/conventions.md`** (if learned something new):
+
 - New patterns discovered
 - Mistakes to avoid
 - Best practices identified
 
 **Update `.claude/memory/decisionLog.md`** (if significant decision made):
+
 - Add new ADR entry
 
 ### 4. Final Checks
 
 Before ending:
+
 - [ ] All work committed or stashed?
 - [ ] Memory Bank files updated?
 - [ ] Any blockers documented?
@@ -149,18 +171,23 @@ Resume with: /session-start
 ## Session Summary
 
 ### Accomplished
+
 - [What was done]
 
 ### In Progress
+
 - [Partially complete work]
 
 ### Next Steps
+
 - [What to do next time]
 
 ### Blockers
+
 - [Anything blocking progress]
 
 ### Notes
+
 - [Any other context]
 ```
 

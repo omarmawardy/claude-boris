@@ -7,26 +7,33 @@ description: Show context window usage, Memory Bank status, and recommendations 
 ## Memory Bank Status
 
 ### Files Present
+
 !`ls -la .claude/memory/ 2>/dev/null || echo "No Memory Bank - run /memory-init"`
 
 ### File Sizes
+
 !`wc -l .claude/memory/*.md 2>/dev/null || echo ""`
 
 ### Last Updated
+
 !`ls -lt .claude/memory/*.md 2>/dev/null | head -5 || echo ""`
 
 ## Session History Size
+
 !`wc -l .claude/memory/sessionHistory.md 2>/dev/null || echo "No session history"`
 
 ## Git Context
 
 ### Uncommitted Changes
+
 !`git status --short 2>/dev/null | wc -l`
 
 ### Recent Commits
+
 !`git log --oneline -5 2>/dev/null`
 
 ### Branch
+
 !`git branch --show-current 2>/dev/null`
 
 ---
@@ -36,6 +43,7 @@ description: Show context window usage, Memory Bank status, and recommendations 
 ### Understanding Context Usage
 
 Claude's context window includes:
+
 - System prompt and tools
 - Conversation history
 - Files read this session
@@ -45,6 +53,7 @@ Claude's context window includes:
 ### Signs of High Context Usage
 
 Watch for:
+
 - Slower responses
 - Forgetting earlier conversation
 - Repetitive file re-reading
@@ -55,15 +64,19 @@ Watch for:
 **If context is high (>75%):**
 
 1. **Compact manually**
+
    ```
    /compact
    ```
+
    Summarizes conversation history to free space.
 
 2. **Save session state**
+
    ```
    /session-end
    ```
+
    Preserves context to Memory Bank before compaction.
 
 3. **Use subagents**
@@ -77,6 +90,7 @@ Watch for:
    - Remove outdated context
 
 2. **Use .claudeignore**
+
    ```
    # .claudeignore
    node_modules/
@@ -84,6 +98,7 @@ Watch for:
    *.log
    *.lock
    ```
+
    Prevents large files from being read.
 
 3. **Scope sessions**
@@ -97,6 +112,7 @@ Watch for:
 ## Memory Bank Health Check
 
 ### Optimal State
+
 - projectContext.md: < 500 lines
 - activeContext.md: < 100 lines
 - progress.md: < 200 lines
@@ -107,6 +123,7 @@ Watch for:
 ### Maintenance Commands
 
 **Archive old history:**
+
 ```bash
 # Move old sessions to archive
 mkdir -p .claude/memory/archive
@@ -116,6 +133,7 @@ mv .claude/memory/sessionHistory.tmp .claude/memory/sessionHistory.md
 ```
 
 **Clean up progress:**
+
 ```bash
 # Remove completed items older than 30 days
 # Manual review recommended
@@ -162,21 +180,25 @@ mv .claude/memory/sessionHistory.tmp .claude/memory/sessionHistory.md
 ## 📊 Context Status
 
 ### Memory Bank
-| File | Lines | Last Updated |
-|------|-------|--------------|
-| projectContext.md | 45 | 2 days ago |
-| activeContext.md | 23 | Today |
-| progress.md | 67 | Today |
-| sessionHistory.md | 234 | Today |
+
+| File              | Lines | Last Updated |
+| ----------------- | ----- | ------------ |
+| projectContext.md | 45    | 2 days ago   |
+| activeContext.md  | 23    | Today        |
+| progress.md       | 67    | Today        |
+| sessionHistory.md | 234   | Today        |
 
 ### Health
+
 - ✅ All files within size limits
 - ⚠️ sessionHistory.md approaching limit (archive recommended)
 
 ### Recommendations
+
 1. [If any maintenance needed]
 
 ### Quick Actions
+
 - Archive old history: `[command]`
 - Start fresh session: `/session-end` then `/session-start`
 - Manual compact: `/compact`

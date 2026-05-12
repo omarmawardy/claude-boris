@@ -5,6 +5,7 @@ description: Switch between operational modes (architect, code, debug, review, a
 # Mode Control
 
 ## Current Mode
+
 !`cat .claude/current-mode 2>/dev/null || echo "code"`
 
 ---
@@ -18,26 +19,31 @@ Target Mode: $ARGUMENTS
 ## Available Modes
 
 ### 🏗️ Architect Mode
+
 **Purpose**: Design and planning only
 **Access**: Read-only, no file modifications
 **Use for**: System design, architecture review, planning
 
 ### 💻 Code Mode (Default)
+
 **Purpose**: Active development
 **Access**: Full tool access
 **Use for**: Implementation, bug fixes, features
 
 ### 🔍 Debug Mode
+
 **Purpose**: Investigation and diagnosis
 **Access**: Read-heavy, limited writes
 **Use for**: Troubleshooting, root cause analysis
 
 ### 👀 Review Mode
+
 **Purpose**: Code review only
 **Access**: Strictly read-only
 **Use for**: PR review, code audit
 
 ### 🔒 Audit Mode
+
 **Purpose**: Security and compliance
 **Access**: Read-only with full logging
 **Use for**: Security scans, compliance checks
@@ -53,6 +59,7 @@ Valid modes: `architect`, `code`, `debug`, `review`, `audit`
 ### 2. Save Current Context
 
 Before switching:
+
 - Note current work state
 - Save any pending changes
 - Update Memory Bank
@@ -82,6 +89,7 @@ To change: /mode [mode-name]
 ### 5. Mode-Specific Behaviors
 
 **Architect Mode:**
+
 ```
 I am now in Architect mode.
 
@@ -98,6 +106,7 @@ I WILL NOT:
 ```
 
 **Code Mode:**
+
 ```
 I am now in Code mode.
 
@@ -106,6 +115,7 @@ All tools available.
 ```
 
 **Debug Mode:**
+
 ```
 I am now in Debug mode.
 
@@ -121,6 +131,7 @@ I WILL LIMIT:
 ```
 
 **Review Mode:**
+
 ```
 I am now in Review mode.
 
@@ -136,6 +147,7 @@ I WILL NOT:
 ```
 
 **Audit Mode:**
+
 ```
 I am now in Audit mode.
 
@@ -154,15 +166,15 @@ I WILL NOT:
 
 ## Mode Permission Matrix
 
-| Action | Architect | Code | Debug | Review | Audit |
-|--------|-----------|------|-------|--------|-------|
-| Read files | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Search code | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Edit files | ❌ | ✅ | ⚠️ | ❌ | ❌ |
-| Write files | ⚠️ | ✅ | ⚠️ | ❌ | ❌ |
-| Git commit | ❌ | ✅ | ❌ | ❌ | ❌ |
-| Run tests | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Run builds | ✅ | ✅ | ✅ | ✅ | ❌ |
+| Action      | Architect | Code | Debug | Review | Audit |
+| ----------- | --------- | ---- | ----- | ------ | ----- |
+| Read files  | ✅        | ✅   | ✅    | ✅     | ✅    |
+| Search code | ✅        | ✅   | ✅    | ✅     | ✅    |
+| Edit files  | ❌        | ✅   | ⚠️    | ❌     | ❌    |
+| Write files | ⚠️        | ✅   | ⚠️    | ❌     | ❌    |
+| Git commit  | ❌        | ✅   | ❌    | ❌     | ❌    |
+| Run tests   | ✅        | ✅   | ✅    | ✅     | ✅    |
+| Run builds  | ✅        | ✅   | ✅    | ✅     | ❌    |
 
 Legend: ✅ Allowed | ❌ Blocked | ⚠️ Requires confirmation
 

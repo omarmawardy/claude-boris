@@ -15,9 +15,11 @@ Different tasks require different mindsets and tool access. An architect thinkin
 ## Available Modes
 
 ### 🏗️ Architect Mode
+
 **Purpose**: Design and planning only. No code modifications.
 
 **Allowed**:
+
 - Read files
 - Search codebase (Grep, Glob)
 - Run read-only commands
@@ -26,12 +28,14 @@ Different tasks require different mindsets and tool access. An architect thinkin
 - Task delegation to other agents
 
 **Restricted**:
+
 - ❌ Edit files
 - ❌ Write files
 - ❌ Git commits
 - ❌ Run modifying commands
 
 **Triggers**:
+
 - `/mode architect`
 - Starting with `/plan`
 - "design", "architect", "plan" keywords
@@ -41,9 +45,11 @@ Different tasks require different mindsets and tool access. An architect thinkin
 ---
 
 ### 💻 Code Mode
+
 **Purpose**: Active development. Full tool access.
 
 **Allowed**:
+
 - All file operations
 - Git operations
 - Test running
@@ -51,13 +57,16 @@ Different tasks require different mindsets and tool access. An architect thinkin
 - Everything
 
 **Restricted**:
+
 - None (full access)
 
 **Triggers**:
+
 - `/mode code` (default)
 - "implement", "build", "code", "fix" keywords
 
 **Behavior**:
+
 - Auto-creates checkpoints before major changes
 - Runs verification after edits
 - Follows project conventions
@@ -65,9 +74,11 @@ Different tasks require different mindsets and tool access. An architect thinkin
 ---
 
 ### 🔍 Debug Mode
+
 **Purpose**: Investigation and diagnosis. Read-heavy, limited writes.
 
 **Allowed**:
+
 - Read all files
 - Search codebase
 - Run diagnostic commands
@@ -75,16 +86,19 @@ Different tasks require different mindsets and tool access. An architect thinkin
 - Read logs
 
 **Restricted**:
+
 - ⚠️ Writes require confirmation
 - ⚠️ No refactoring
 - ⚠️ Fixes should be minimal
 
 **Triggers**:
+
 - `/mode debug`
 - "debug", "investigate", "diagnose" keywords
 - When errors are reported
 
 **Behavior**:
+
 - Focus on finding root cause
 - Minimal invasive changes
 - Document findings
@@ -92,9 +106,11 @@ Different tasks require different mindsets and tool access. An architect thinkin
 ---
 
 ### 👀 Review Mode
+
 **Purpose**: Code review only. Strictly read-only.
 
 **Allowed**:
+
 - Read files
 - View diffs
 - Search codebase
@@ -102,17 +118,20 @@ Different tasks require different mindsets and tool access. An architect thinkin
 - Create review reports
 
 **Restricted**:
+
 - ❌ Edit files
 - ❌ Write files
 - ❌ Git operations (except checkout)
 - ❌ Modifying commands
 
 **Triggers**:
+
 - `/mode review`
 - `/review-changes`
 - "review", "audit" keywords
 
 **Behavior**:
+
 - Observe and report only
 - Suggest changes, don't make them
 - Generate actionable feedback
@@ -120,25 +139,30 @@ Different tasks require different mindsets and tool access. An architect thinkin
 ---
 
 ### 🔒 Audit Mode
+
 **Purpose**: Security and compliance auditing. Read-only with logging.
 
 **Allowed**:
+
 - Read all files (including configs)
 - Search for patterns
 - Run security scans
 - Generate audit reports
 
 **Restricted**:
+
 - ❌ All writes
 - ❌ All modifications
 - Logs all file accesses
 
 **Triggers**:
+
 - `/mode audit`
 - `/security-scan`
 - Security-focused requests
 
 **Behavior**:
+
 - Document everything accessed
 - Generate compliance reports
 - Flag issues without fixing
@@ -148,6 +172,7 @@ Different tasks require different mindsets and tool access. An architect thinkin
 ## Mode Switching
 
 ### Commands
+
 ```bash
 /mode architect   # Switch to Architect mode
 /mode code        # Switch to Code mode
@@ -158,13 +183,16 @@ Different tasks require different mindsets and tool access. An architect thinkin
 ```
 
 ### Automatic Detection
+
 Based on conversation context:
+
 - "Let's plan how to..." → Architect
 - "Fix the bug in..." → Debug → Code
 - "Review this PR..." → Review
 - "Check security of..." → Audit
 
 ### Mode Persistence
+
 - Mode persists within session
 - Explicit switch required to change
 - Memory Bank tracks mode history
@@ -172,6 +200,7 @@ Based on conversation context:
 ## Enforcement Mechanism
 
 ### Tool Interception
+
 ```javascript
 // Pseudo-code for mode enforcement
 const toolCall = (tool, args) => {
@@ -182,14 +211,14 @@ const toolCall = (tool, args) => {
     return {
       blocked: true,
       reason: `${tool} not allowed in ${currentMode} mode`,
-      suggestion: `Switch to appropriate mode: /mode code`
+      suggestion: `Switch to appropriate mode: /mode code`,
     };
   }
 
-  if (allowed === 'confirm') {
+  if (allowed === "confirm") {
     return {
       requiresConfirmation: true,
-      message: `${tool} requires confirmation in ${currentMode} mode. Proceed?`
+      message: `${tool} requires confirmation in ${currentMode} mode. Proceed?`,
     };
   }
 
@@ -199,26 +228,28 @@ const toolCall = (tool, args) => {
 
 ### Permission Matrix
 
-| Tool | Architect | Code | Debug | Review | Audit |
-|------|-----------|------|-------|--------|-------|
-| Read | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Grep | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Glob | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Edit | ❌ | ✅ | ⚠️ | ❌ | ❌ |
-| Write | ⚠️ docs | ✅ | ⚠️ | ❌ | ❌ |
-| Bash (read) | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Bash (write) | ❌ | ✅ | ⚠️ | ❌ | ❌ |
-| Git (read) | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Git (write) | ❌ | ✅ | ❌ | ❌ | ❌ |
-| Task | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Tool         | Architect | Code | Debug | Review | Audit |
+| ------------ | --------- | ---- | ----- | ------ | ----- |
+| Read         | ✅        | ✅   | ✅    | ✅     | ✅    |
+| Grep         | ✅        | ✅   | ✅    | ✅     | ✅    |
+| Glob         | ✅        | ✅   | ✅    | ✅     | ✅    |
+| Edit         | ❌        | ✅   | ⚠️    | ❌     | ❌    |
+| Write        | ⚠️ docs   | ✅   | ⚠️    | ❌     | ❌    |
+| Bash (read)  | ✅        | ✅   | ✅    | ✅     | ✅    |
+| Bash (write) | ❌        | ✅   | ⚠️    | ❌     | ❌    |
+| Git (read)   | ✅        | ✅   | ✅    | ✅     | ✅    |
+| Git (write)  | ❌        | ✅   | ❌    | ❌     | ❌    |
+| Task         | ✅        | ✅   | ✅    | ✅     | ✅    |
 
 Legend: ✅ Allowed | ❌ Blocked | ⚠️ Requires confirmation
 
 ## Mode-Specific Behaviors
 
 ### Architect Mode Behavior
+
 ```markdown
 In Architect mode, I will:
+
 1. Focus on high-level design
 2. Create documentation and diagrams
 3. Analyze trade-offs
@@ -226,14 +257,17 @@ In Architect mode, I will:
 5. Delegate implementation to Code mode
 
 I will NOT:
+
 - Edit source code files
 - Make commits
 - Run modifying commands
 ```
 
 ### Debug Mode Behavior
+
 ```markdown
 In Debug mode, I will:
+
 1. Investigate the issue systematically
 2. Read logs and error messages
 3. Add minimal diagnostic code (with confirmation)
@@ -241,20 +275,24 @@ In Debug mode, I will:
 5. Propose fixes for Code mode to implement
 
 I will limit:
+
 - Direct code changes
 - Refactoring
 - Feature additions
 ```
 
 ### Review Mode Behavior
+
 ```markdown
 In Review mode, I will:
+
 1. Read and analyze code
 2. Generate constructive feedback
 3. Identify issues and suggest fixes
 4. Create review reports
 
 I will NOT:
+
 - Modify any files
 - Make commits
 - Apply fixes (suggestions only)
@@ -263,6 +301,7 @@ I will NOT:
 ## Output Format
 
 ### Mode Status
+
 ```markdown
 ## 🎛️ Mode Status
 
@@ -271,11 +310,13 @@ I will NOT:
 **Session Duration**: 45 minutes
 
 ### Mode Restrictions Active
+
 - File editing: ❌ Blocked
 - Git commits: ❌ Blocked
 - Write operations: ⚠️ Docs only
 
 ### Available Actions
+
 - Read and search codebase
 - Create design documents
 - Delegate to specialist agents
@@ -283,13 +324,17 @@ I will NOT:
 
 ### To Change Mode
 ```
-/mode code    # For implementation
-/mode debug   # For investigation
-/mode review  # For code review
+
+/mode code # For implementation
+/mode debug # For investigation
+/mode review # For code review
+
 ```
+
 ```
 
 ### Mode Violation Attempt
+
 ```markdown
 ## ⚠️ Mode Restriction
 
@@ -298,14 +343,17 @@ I will NOT:
 **Status**: Blocked
 
 ### Reason
+
 In Architect mode, file editing is restricted to prevent mixing design and implementation phases.
 
 ### Options
+
 1. Switch to Code mode: `/mode code`
 2. Delegate to code-simplifier agent
 3. Document the change for later implementation
 
 ### Design Instead?
+
 I can create a design document describing the changes needed.
 ```
 

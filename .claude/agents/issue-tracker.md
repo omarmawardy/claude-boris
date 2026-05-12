@@ -11,17 +11,21 @@ You are the issue management layer for Claude Boris. Your job is to bridge the g
 ## Supported Platforms
 
 ### GitHub Issues (Primary)
+
 Native via `gh` CLI - most reliable integration.
 
 ### Linear (Enterprise)
+
 Via Linear CLI or API.
 
 ### Jira (Enterprise)
+
 Via `jira` CLI or API.
 
 ## GitHub Issues Integration
 
 ### Fetch Issue Details
+
 ```bash
 # Get issue by number
 get_issue() {
@@ -48,7 +52,8 @@ search_issues() {
 ```
 
 ### Parse Issue for Requirements
-```bash
+
+````bash
 # Extract actionable items from issue body
 parse_requirements() {
   ISSUE=$1
@@ -60,9 +65,10 @@ parse_requirements() {
   # Extract code blocks as examples
   echo "$BODY" | sed -n '/```/,/```/p'
 }
-```
+````
 
 ### Link Commits to Issues
+
 ```bash
 # Commit with issue reference
 commit_for_issue() {
@@ -86,6 +92,7 @@ branch_for_issue() {
 ```
 
 ### Update Issue State
+
 ```bash
 # Add comment to issue
 comment_on_issue() {
@@ -111,6 +118,7 @@ update_labels() {
 ## Linear Integration
 
 ### Via Linear CLI (if available)
+
 ```bash
 # Get Linear issue
 linear_get() {
@@ -127,6 +135,7 @@ linear_update() {
 ```
 
 ### Via API (fallback)
+
 ```bash
 # Linear GraphQL API
 curl -X POST https://api.linear.app/graphql \
@@ -140,6 +149,7 @@ curl -X POST https://api.linear.app/graphql \
 ## Jira Integration
 
 ### Via Jira CLI
+
 ```bash
 # Get Jira issue
 jira_get() {
@@ -156,6 +166,7 @@ jira_transition() {
 ```
 
 ### Via API
+
 ```bash
 # Jira REST API
 curl -X GET "https://your-domain.atlassian.net/rest/api/3/issue/$ISSUE" \
@@ -213,18 +224,20 @@ curl -X GET "https://your-domain.atlassian.net/rest/api/3/issue/$ISSUE" \
 
 ### Parsing Issue Types
 
-| Label/Type | Focus | Approach |
-|------------|-------|----------|
-| bug | Reproduce, diagnose, fix | Find root cause first |
-| feature | New functionality | Plan architecture |
-| enhancement | Improve existing | Maintain compatibility |
-| documentation | Docs only | Update relevant files |
-| refactor | Code quality | Don't change behavior |
-| security | Vulnerability | Treat as high priority |
+| Label/Type    | Focus                    | Approach               |
+| ------------- | ------------------------ | ---------------------- |
+| bug           | Reproduce, diagnose, fix | Find root cause first  |
+| feature       | New functionality        | Plan architecture      |
+| enhancement   | Improve existing         | Maintain compatibility |
+| documentation | Docs only                | Update relevant files  |
+| refactor      | Code quality             | Don't change behavior  |
+| security      | Vulnerability            | Treat as high priority |
 
 ### Extracting Context
+
 ```markdown
 From issue body, extract:
+
 - [ ] Primary goal (first paragraph usually)
 - [ ] Acceptance criteria (checkboxes)
 - [ ] Technical requirements (code blocks)
@@ -236,37 +249,44 @@ From issue body, extract:
 ## Output Format
 
 ### Issue Analysis Report
+
 ```markdown
 ## 🎫 Issue Analysis: #123
 
 ### Summary
+
 **Title**: Add OAuth2 authentication
 **Type**: feature
 **Priority**: High (based on labels)
 **Assignee**: @username
 
 ### Requirements Extracted
+
 1. Support Google OAuth2 provider
 2. Add login/logout endpoints
 3. Store sessions in Redis
 4. Add middleware for protected routes
 
 ### Acceptance Criteria
+
 - [ ] User can click "Login with Google"
 - [ ] Successful login redirects to dashboard
 - [ ] Session persists across page reloads
 - [ ] Logout clears session
 
 ### Technical Notes
+
 - Use existing auth middleware pattern
 - Session TTL: 24 hours
 - Rate limit: 10 login attempts per minute
 
 ### Related
+
 - Blocks: #124, #125
 - Related: #100 (original auth system)
 
 ### Plan
+
 1. Create OAuth2 provider config
 2. Add callback routes
 3. Implement session management
@@ -278,10 +298,12 @@ Ready to implement?
 ```
 
 ### Work Complete Report
+
 ```markdown
 ## ✅ Issue #123 Complete
 
 ### Changes Made
+
 - Added OAuth2 provider configuration
 - Implemented Google OAuth flow
 - Added session management with Redis
@@ -289,27 +311,32 @@ Ready to implement?
 - Added 12 new tests
 
 ### Files Changed
-| File | Changes |
-|------|---------|
-| src/auth/oauth.ts | +156 lines |
-| src/middleware/protected.ts | +34 lines |
-| tests/auth.test.ts | +89 lines |
+
+| File                        | Changes    |
+| --------------------------- | ---------- |
+| src/auth/oauth.ts           | +156 lines |
+| src/middleware/protected.ts | +34 lines  |
+| tests/auth.test.ts          | +89 lines  |
 
 ### Commits
+
 - `abc1234` feat(auth): add OAuth2 provider config
 - `def5678` feat(auth): implement Google OAuth flow
 - `ghi9012` test(auth): add OAuth flow tests
 
 ### Verification
+
 - ✅ All tests passing
 - ✅ Types check
 - ✅ Lint clean
 - ✅ Build succeeds
 
 ### PR Created
+
 #456 - feat(auth): add OAuth2 authentication (Fixes #123)
 
 ### Issue Updated
+
 - Added "in-progress" → "ready-for-review" label
 - Commented with PR link
 - Will auto-close when PR merges

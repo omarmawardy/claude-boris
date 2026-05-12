@@ -44,13 +44,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Development Commands
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Production build |
-| `npm test` | Run test suite |
-| `npm run lint` | Run ESLint |
-| `npm run typecheck` | TypeScript check |
+| Command             | Description              |
+| ------------------- | ------------------------ |
+| `npm run dev`       | Start development server |
+| `npm run build`     | Production build         |
+| `npm test`          | Run test suite           |
+| `npm run lint`      | Run ESLint               |
+| `npm run typecheck` | TypeScript check         |
 
 ## Project Structure
 
@@ -65,18 +65,21 @@ src/
 ## Code Conventions
 
 ### Style
+
 - TypeScript strict mode
 - Prefer `const` over `let`
 - Functions < 20 lines ideal
 - Meaningful variable names
 
 ### Naming
+
 - Components: `PascalCase`
 - Utilities: `camelCase`
 - Constants: `SCREAMING_SNAKE_CASE`
 - Files: `kebab-case`
 
 ### Patterns
+
 - One component per file
 - Co-locate tests with source
 - Use conventional commits
@@ -100,6 +103,7 @@ src/
 <!-- Add entries when Claude makes mistakes -->
 
 ### Example
+
 **What happened**: [Description]
 **Why it's wrong**: [Explanation]
 **Do instead**: [Correct approach]
@@ -111,6 +115,7 @@ src/
 <!-- Document patterns that work well -->
 
 ### Example
+
 **Pattern**: [Name]
 **When**: [Context]
 **How**: [Implementation]
@@ -122,6 +127,7 @@ src/
 This project uses Claude Boris Memory Bank for persistent context.
 
 **Files**: `.claude/memory/`
+
 - `projectContext.md` - Project understanding
 - `activeContext.md` - Current session state
 - `progress.md` - Task tracking
@@ -130,10 +136,11 @@ This project uses Claude Boris Memory Bank for persistent context.
 - `sessionHistory.md` - Session summaries
 
 **Usage**:
+
 - Start sessions with `/session-start`
 - End sessions with `/session-end`
 - Memory persists across Claude sessions
 
 ---
 
-*Update this file whenever Claude should remember something important.*
+_Update this file whenever Claude should remember something important._

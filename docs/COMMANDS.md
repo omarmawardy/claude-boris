@@ -13,6 +13,7 @@ The master orchestrator. Use for any complex task.
 ```
 
 **Examples:**
+
 ```
 /boris Add user authentication with OAuth
 /boris Refactor the payment module for better testability
@@ -20,6 +21,7 @@ The master orchestrator. Use for any complex task.
 ```
 
 **What it does:**
+
 1. Creates a detailed plan
 2. Gets your approval
 3. Delegates to specialist agents
@@ -37,6 +39,7 @@ Complete git workflow in one command.
 ```
 
 **What it does:**
+
 1. Stages all changes
 2. Creates conventional commit message
 3. Pushes to remote
@@ -53,6 +56,7 @@ Run tests and fix failures iteratively.
 ```
 
 **What it does:**
+
 1. Runs test suite
 2. Analyzes failures
 3. Fixes issues
@@ -70,6 +74,7 @@ Complete verification suite.
 ```
 
 **What it does:**
+
 1. Runs tests
 2. Checks TypeScript
 3. Runs linter
@@ -87,6 +92,7 @@ Review uncommitted changes before committing.
 ```
 
 **What it does:**
+
 1. Shows current diff
 2. Checks for bugs
 3. Checks security concerns
@@ -118,6 +124,7 @@ Break down complex problems.
 ```
 
 Analyzes problems by:
+
 1. Identifying assumptions
 2. Finding fundamental truths
 3. Rebuilding solution from scratch
@@ -133,6 +140,7 @@ Learn from recent work.
 ```
 
 Reviews session for:
+
 - Mistakes to document
 - Patterns to remember
 - Commands to update
@@ -149,6 +157,7 @@ Fix a GitHub issue end-to-end.
 ```
 
 **What it does:**
+
 1. Fetches issue details
 2. Analyzes the problem
 3. Plans the fix
@@ -166,6 +175,7 @@ Start a coding session.
 ```
 
 Loads context:
+
 - Project status
 - Git state
 - CLAUDE.md reminders
@@ -182,6 +192,7 @@ End a coding session.
 ```
 
 Wraps up:
+
 - Commits/stashes work
 - Updates CLAUDE.md
 - Pushes changes
@@ -208,6 +219,7 @@ Reference arguments with $ARGUMENTS
 ```
 
 **Tips:**
+
 - Keep descriptions under one line
 - Use inline bash to pre-compute context
 - Be specific about expected output

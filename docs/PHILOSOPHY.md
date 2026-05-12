@@ -17,6 +17,7 @@ Claude Boris distills that thread into an actionable configuration.
 **Why it works:** A clear plan prevents wasted effort. When Claude knows exactly what to do, it executes faster and with fewer errors.
 
 **How Boris implements it:**
+
 - `/boris` always creates a plan first
 - Plans include steps, owners, and verification strategy
 - User must approve before execution begins
@@ -28,6 +29,7 @@ Claude Boris distills that thread into an actionable configuration.
 **Why it works:** Feedback loops enable self-correction. Without verification, Claude might produce code that looks right but doesn't work.
 
 **How Boris implements it:**
+
 - Every task ends with verification checks
 - Tests, types, lint, build must all pass
 - `verify-app` agent does comprehensive testing
@@ -40,6 +42,7 @@ Claude Boris distills that thread into an actionable configuration.
 **Why it works:** Mistakes become knowledge. Instead of repeating errors, Claude learns from them permanently.
 
 **How Boris implements it:**
+
 - CLAUDE.md is the project's memory
 - `/update-claude-md` captures learnings
 - Mistakes to Avoid section prevents repeat errors
@@ -52,6 +55,7 @@ Claude Boris distills that thread into an actionable configuration.
 **Why it works:** Specialized agents do specialized tasks better. A code reviewer thinks differently than a code writer.
 
 **How Boris implements it:**
+
 - `boris` orchestrates, doesn't do everything
 - Specialist agents for architecture, testing, review, docs
 - Each agent has focused expertise and clear process
@@ -64,6 +68,7 @@ Claude Boris distills that thread into an actionable configuration.
 **Why it works:** Repeated work is wasteful. Commands encode workflows once and reuse them forever.
 
 **How Boris implements it:**
+
 - `/commit-push-pr` for git workflow
 - `/test-and-fix` for test iteration
 - `/verify-all` for comprehensive checks
@@ -113,7 +118,7 @@ User: Yes
 Boris: [Coordinates execution...]
        [Runs verification...]
        [All checks pass...]
-       
+
 Ready to commit. Running /commit-push-pr...
 
 Done! PR #42 created: "feat(auth): add user authentication"

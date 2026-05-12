@@ -5,12 +5,15 @@ description: Update CLAUDE.md with learnings from recent work - mistakes to avoi
 # Context Gathering
 
 ## Recent Git History
+
 !`git log --oneline -10`
 
 ## Current CLAUDE.md
+
 !`cat CLAUDE.md 2>/dev/null || echo "No CLAUDE.md found"`
 
 ## Recent Changes
+
 !`git diff HEAD~3 --stat`
 
 ---
@@ -20,25 +23,33 @@ description: Update CLAUDE.md with learnings from recent work - mistakes to avoi
 Analyze recent work and conversation to identify:
 
 ### 1. Mistakes Made
+
 Things that went wrong that should be documented:
+
 - Bugs introduced and how they were fixed
 - Wrong approaches that wasted time
 - Misunderstandings about the codebase
 
 ### 2. New Patterns Discovered
+
 Patterns or conventions that should be followed:
+
 - Code patterns that work well
 - Testing approaches
 - File organization
 
 ### 3. Commands/Scripts Updated
+
 New or changed development commands:
+
 - Build commands
 - Test commands
 - Deployment scripts
 
 ### 4. Architecture Decisions
+
 Significant decisions that affect future work:
+
 - Why something was built a certain way
 - Trade-offs that were made
 
@@ -54,6 +65,7 @@ Based on the analysis, update CLAUDE.md with new learnings.
 ## Mistakes to Avoid
 
 ### [Date] - [Brief Title]
+
 **What happened**: [Description]
 **Why it's wrong**: [Explanation]
 **Do this instead**: [Correct approach]
@@ -63,6 +75,7 @@ Based on the analysis, update CLAUDE.md with new learnings.
 ## Learned Patterns
 
 ### [Pattern Name]
+
 **When to use**: [Context]
 **How to implement**: [Brief guide]
 **Example**: [Code snippet if helpful]

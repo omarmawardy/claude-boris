@@ -43,11 +43,13 @@ Shall I proceed?
 ## Quick Start
 
 ### One-Line Install
+
 ```bash
 curl -fsSL https://raw.githubusercontent.com/llcoolblaze/claude-boris/main/install.sh | bash
 ```
 
 ### Manual Install
+
 ```bash
 git clone https://github.com/llcoolblaze/claude-boris.git
 cd claude-boris
@@ -55,6 +57,7 @@ cd claude-boris
 ```
 
 ### Then
+
 ```bash
 claude              # Start Claude Code
 /memory-init        # Initialize Memory Bank
@@ -66,6 +69,7 @@ claude              # Start Claude Code
 ## What's New in v2.0
 
 ### Memory Bank System
+
 **Persistent context across sessions** - Never re-explain your project again.
 
 ```
@@ -79,35 +83,38 @@ claude              # Start Claude Code
 ```
 
 ### 6 New Agents for Critical Gaps
-| Agent | Gap Solved |
-|-------|-----------|
-| `memory-bank` | Context loss between sessions |
-| `security-auditor` | Security blind spots |
-| `git-guardian` | Unsafe git operations |
-| `ci-integrator` | Manual CI checking |
-| `issue-tracker` | Issue tracker disconnect |
-| `mode-controller` | Mode confusion |
-| `audit-logger` | Compliance requirements |
+
+| Agent              | Gap Solved                    |
+| ------------------ | ----------------------------- |
+| `memory-bank`      | Context loss between sessions |
+| `security-auditor` | Security blind spots          |
+| `git-guardian`     | Unsafe git operations         |
+| `ci-integrator`    | Manual CI checking            |
+| `issue-tracker`    | Issue tracker disconnect      |
+| `mode-controller`  | Mode confusion                |
+| `audit-logger`     | Compliance requirements       |
 
 ### 10 New Commands
-| Command | Purpose |
-|---------|---------|
-| `/session-start` | Load Memory Bank context |
-| `/session-end` | Save context for next session |
-| `/undo` | Revert last Claude change |
-| `/checkpoint` | Create named save point |
-| `/rollback` | Restore checkpoint |
-| `/mode` | Switch modes (architect/code/debug/review) |
-| `/fix-issue` | End-to-end issue resolution |
-| `/ci-loop` | Push, wait for CI, fix, iterate |
-| `/security-scan` | Vulnerability scanning |
-| `/context` | Check context usage |
+
+| Command          | Purpose                                    |
+| ---------------- | ------------------------------------------ |
+| `/session-start` | Load Memory Bank context                   |
+| `/session-end`   | Save context for next session              |
+| `/undo`          | Revert last Claude change                  |
+| `/checkpoint`    | Create named save point                    |
+| `/rollback`      | Restore checkpoint                         |
+| `/mode`          | Switch modes (architect/code/debug/review) |
+| `/fix-issue`     | End-to-end issue resolution                |
+| `/ci-loop`       | Push, wait for CI, fix, iterate            |
+| `/security-scan` | Vulnerability scanning                     |
+| `/context`       | Check context usage                        |
 
 ---
 
 ## Features
 
 ### 🎯 Boris Orchestrator
+
 One agent to rule them all. Boris coordinates 14 specialist agents.
 
 ```bash
@@ -115,6 +122,7 @@ One agent to rule them all. Boris coordinates 14 specialist agents.
 ```
 
 ### 📚 Memory Bank
+
 Persistent context that survives session ends.
 
 ```bash
@@ -123,6 +131,7 @@ Persistent context that survives session ends.
 ```
 
 ### 🔒 Security Scanning
+
 SAST, dependency vulnerabilities, OWASP checks.
 
 ```bash
@@ -130,6 +139,7 @@ SAST, dependency vulnerabilities, OWASP checks.
 ```
 
 ### ↩️ Undo & Checkpoints
+
 Never fear breaking things.
 
 ```bash
@@ -139,6 +149,7 @@ Never fear breaking things.
 ```
 
 ### 🔄 CI Integration
+
 Automated feedback loop.
 
 ```bash
@@ -146,6 +157,7 @@ Automated feedback loop.
 ```
 
 ### 🎛️ Mode System
+
 Behavioral guardrails.
 
 ```bash
@@ -159,47 +171,47 @@ Behavioral guardrails.
 
 ## All Commands
 
-| Command | Description |
-|---------|-------------|
-| `/boris <task>` | Full orchestrated workflow |
-| `/session-start` | Load Memory Bank context |
-| `/session-end` | Save context for next session |
-| `/verify-all` | Run tests, types, lint, build |
-| `/test-and-fix` | Fix tests iteratively |
-| `/security-scan` | Vulnerability scanning |
-| `/commit-push-pr` | Full git workflow with PR |
-| `/quick-commit` | Fast local commit |
-| `/undo` | Revert last Claude change |
-| `/checkpoint [name]` | Create save point |
-| `/rollback [target]` | Restore checkpoint |
-| `/mode [mode]` | Switch operational modes |
-| `/fix-issue <num>` | End-to-end issue resolution |
-| `/ci-loop` | Push, wait for CI, fix |
-| `/context` | Show context usage |
-| `/memory-init` | Initialize Memory Bank |
-| `/update-claude-md` | Learn from mistakes |
-| `/first-principles` | Break down problems |
+| Command              | Description                   |
+| -------------------- | ----------------------------- |
+| `/boris <task>`      | Full orchestrated workflow    |
+| `/session-start`     | Load Memory Bank context      |
+| `/session-end`       | Save context for next session |
+| `/verify-all`        | Run tests, types, lint, build |
+| `/test-and-fix`      | Fix tests iteratively         |
+| `/security-scan`     | Vulnerability scanning        |
+| `/commit-push-pr`    | Full git workflow with PR     |
+| `/quick-commit`      | Fast local commit             |
+| `/undo`              | Revert last Claude change     |
+| `/checkpoint [name]` | Create save point             |
+| `/rollback [target]` | Restore checkpoint            |
+| `/mode [mode]`       | Switch operational modes      |
+| `/fix-issue <num>`   | End-to-end issue resolution   |
+| `/ci-loop`           | Push, wait for CI, fix        |
+| `/context`           | Show context usage            |
+| `/memory-init`       | Initialize Memory Bank        |
+| `/update-claude-md`  | Learn from mistakes           |
+| `/first-principles`  | Break down problems           |
 
 ---
 
 ## All Agents
 
-| Agent | Purpose |
-|-------|---------|
-| `boris` | Master orchestrator |
-| `memory-bank` | Session persistence |
-| `security-auditor` | Security scanning |
-| `git-guardian` | Safe git operations |
-| `ci-integrator` | CI feedback loops |
-| `issue-tracker` | GitHub/Linear integration |
-| `mode-controller` | Behavioral modes |
-| `audit-logger` | Compliance logging |
-| `code-architect` | Design decisions |
-| `code-simplifier` | Simplify code |
-| `test-writer` | Generate tests |
-| `verify-app` | End-to-end verification |
-| `pr-reviewer` | Code review |
-| `doc-generator` | Documentation |
+| Agent              | Purpose                   |
+| ------------------ | ------------------------- |
+| `boris`            | Master orchestrator       |
+| `memory-bank`      | Session persistence       |
+| `security-auditor` | Security scanning         |
+| `git-guardian`     | Safe git operations       |
+| `ci-integrator`    | CI feedback loops         |
+| `issue-tracker`    | GitHub/Linear integration |
+| `mode-controller`  | Behavioral modes          |
+| `audit-logger`     | Compliance logging        |
+| `code-architect`   | Design decisions          |
+| `code-simplifier`  | Simplify code             |
+| `test-writer`      | Generate tests            |
+| `verify-app`       | End-to-end verification   |
+| `pr-reviewer`      | Code review               |
+| `doc-generator`    | Documentation             |
 
 ---
 
@@ -242,18 +254,18 @@ Behavioral guardrails.
 
 ## The 10 Gaps Solved
 
-| # | Gap | Solution |
-|---|-----|----------|
-| 1 | Context loss between sessions | Memory Bank system |
-| 2 | Mode confusion | Mode controller with restrictions |
-| 3 | Unsafe git operations | Git Guardian with undo/checkpoints |
-| 4 | Manual CI checking | CI Integrator with auto-fix loop |
-| 5 | Issue tracker disconnect | Native GitHub integration |
-| 6 | Security blind spots | Security Auditor (SAST/OWASP) |
-| 7 | No rollback capability | Checkpoint/rollback system |
-| 8 | Manual test iteration | Test-and-fix loop |
-| 9 | Compliance requirements | Audit Logger (SOC 2/ISO 27001) |
-| 10 | Context window limits | Memory Bank + proactive compaction |
+| #   | Gap                           | Solution                           |
+| --- | ----------------------------- | ---------------------------------- |
+| 1   | Context loss between sessions | Memory Bank system                 |
+| 2   | Mode confusion                | Mode controller with restrictions  |
+| 3   | Unsafe git operations         | Git Guardian with undo/checkpoints |
+| 4   | Manual CI checking            | CI Integrator with auto-fix loop   |
+| 5   | Issue tracker disconnect      | Native GitHub integration          |
+| 6   | Security blind spots          | Security Auditor (SAST/OWASP)      |
+| 7   | No rollback capability        | Checkpoint/rollback system         |
+| 8   | Manual test iteration         | Test-and-fix loop                  |
+| 9   | Compliance requirements       | Audit Logger (SOC 2/ISO 27001)     |
+| 10  | Context window limits         | Memory Bank + proactive compaction |
 
 ---
 
@@ -272,15 +284,19 @@ Based on Boris Cherny's practices:
 ## Configuration
 
 ### Permissions
+
 Pre-configured safe defaults in `.claude/settings.json`:
+
 - **Allowed**: git, gh, npm, file operations
 - **Denied**: destructive commands, secrets, force push
 
 ### Hooks
+
 - **PostToolUse**: Auto-format with Prettier
 - **PreToolUse**: Audit logging
 
 ### Customize
+
 Create `.claude/settings.local.json` for personal overrides.
 
 ---

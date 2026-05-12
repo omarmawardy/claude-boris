@@ -3,6 +3,7 @@ description: Fast commit - stage all changes and commit with a descriptive messa
 ---
 
 # Changes
+
 !`git status --short`
 !`git diff --stat`
 
@@ -13,6 +14,7 @@ description: Fast commit - stage all changes and commit with a descriptive messa
 Based on the changes:
 
 1. **Stage all changes**
+
    ```bash
    git add -A
    ```

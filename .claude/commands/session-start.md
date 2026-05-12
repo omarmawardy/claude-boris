@@ -7,15 +7,19 @@ description: Start a new session by loading Memory Bank context, checking projec
 ## Memory Bank Loading...
 
 ### Project Context
+
 !`cat .claude/memory/projectContext.md 2>/dev/null | head -40 || echo "📝 No project context - run /memory-init to set up"`
 
 ### Active Context (Last Session State)
+
 !`cat .claude/memory/activeContext.md 2>/dev/null | head -30 || echo "No active context"`
 
 ### Progress Status
+
 !`cat .claude/memory/progress.md 2>/dev/null | grep -A 20 "## In Progress\|## Completed" | head -25 || echo "No progress tracking"`
 
 ### Recent Session
+
 !`cat .claude/memory/sessionHistory.md 2>/dev/null | head -40 || echo "No session history"`
 
 ## Project Status
@@ -26,13 +30,16 @@ description: Start a new session by loading Memory Bank context, checking projec
 !`git log --oneline -5 2>/dev/null`
 
 ## Environment Check
+
 !`node --version 2>/dev/null || echo "Node not found"`
 !`cat package.json 2>/dev/null | jq -r '.name + " v" + .version' 2>/dev/null || echo ""`
 
 ## Open Issues
+
 !`gh issue list --state open --limit 5 2>/dev/null || echo ""`
 
 ## CLAUDE.md Quick Reference
+
 !`cat CLAUDE.md 2>/dev/null | head -30 || echo "No CLAUDE.md"`
 
 ---
@@ -42,6 +49,7 @@ description: Start a new session by loading Memory Bank context, checking projec
 ### 1. Synthesize Context
 
 From Memory Bank, understand:
+
 - **Project**: What is this and what's its purpose?
 - **Last Session**: What was being worked on?
 - **Current Focus**: From activeContext.md
@@ -50,6 +58,7 @@ From Memory Bank, understand:
 ### 2. State Summary
 
 Report to user:
+
 ```
 📚 Memory Bank Loaded
 
@@ -66,6 +75,7 @@ Ready to continue where you left off.
 ### 3. Update Active Context
 
 Mark session start:
+
 - Record start timestamp
 - Note current branch
 - Update session state
@@ -73,6 +83,7 @@ Mark session start:
 ### 4. Suggest Next Actions
 
 Based on context:
+
 - Continue last session's work?
 - Address pending items?
 - Review open issues?

@@ -62,6 +62,7 @@ detect_ci() {
 ## GitHub Actions Integration
 
 ### Monitor Workflow Run
+
 ```bash
 # Get latest workflow run for current branch
 get_latest_run() {
@@ -87,6 +88,7 @@ get_failure_details() {
 ```
 
 ### Parse CI Failures
+
 ```bash
 # Extract actionable errors from CI logs
 parse_ci_logs() {
@@ -109,6 +111,7 @@ parse_ci_logs() {
 ## The Fix Loop
 
 ### Automated Fix Process
+
 ```
 1. Push changes to branch
 2. Trigger CI (automatic or manual)
@@ -126,15 +129,16 @@ parse_ci_logs() {
 
 ### Fix Categories
 
-| Error Type | Auto-fixable | Strategy |
-|------------|--------------|----------|
-| Lint errors | Yes | `npm run lint:fix` |
-| Type errors | Partial | Analyze and fix types |
-| Test failures | Partial | Debug and fix logic |
-| Build errors | Partial | Dependency or config issues |
-| E2E failures | No | Usually needs manual investigation |
+| Error Type    | Auto-fixable | Strategy                           |
+| ------------- | ------------ | ---------------------------------- |
+| Lint errors   | Yes          | `npm run lint:fix`                 |
+| Type errors   | Partial      | Analyze and fix types              |
+| Test failures | Partial      | Debug and fix logic                |
+| Build errors  | Partial      | Dependency or config issues        |
+| E2E failures  | No           | Usually needs manual investigation |
 
 ### Circuit Breaker
+
 ```bash
 MAX_ITERATIONS=5
 ITERATION=0
@@ -174,6 +178,7 @@ ci_loop() {
 ## Error Parsing Patterns
 
 ### TypeScript Errors
+
 ```
 error TS2345: Argument of type 'string' is not assignable...
 → Parse file, line, and error code
@@ -182,6 +187,7 @@ error TS2345: Argument of type 'string' is not assignable...
 ```
 
 ### Jest Failures
+
 ```
 FAIL src/utils.test.ts
   ● Test suite failed to run
@@ -192,6 +198,7 @@ FAIL src/utils.test.ts
 ```
 
 ### ESLint Errors
+
 ```
 /src/index.ts
   10:5  error  'x' is never reassigned. Use 'const'  prefer-const
@@ -199,6 +206,7 @@ FAIL src/utils.test.ts
 ```
 
 ### Build Errors
+
 ```
 Module not found: Can't resolve './Component'
 → Check for typos, missing files
@@ -213,7 +221,7 @@ name: CI
 
 on:
   push:
-    branches: [main, 'feature/**']
+    branches: [main, "feature/**"]
   pull_request:
     branches: [main]
 
@@ -224,8 +232,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
+          node-version: "20"
+          cache: "npm"
 
       - run: npm ci
       - run: npm run typecheck
@@ -237,58 +245,71 @@ jobs:
 ## Output Format
 
 ### CI Loop Report
+
 ```markdown
 ## 🔄 CI Integration Report
 
 ### Pipeline Status
+
 - **Run ID**: 12345678
 - **Branch**: feature/auth
 - **Status**: ✅ Passed / ❌ Failed
 - **Duration**: 2m 34s
 
 ### Iterations
-| # | Status | Fixes Applied |
-|---|--------|---------------|
-| 1 | ❌ | Lint errors fixed |
-| 2 | ❌ | Type errors fixed |
-| 3 | ✅ | - |
+
+| #   | Status | Fixes Applied     |
+| --- | ------ | ----------------- |
+| 1   | ❌     | Lint errors fixed |
+| 2   | ❌     | Type errors fixed |
+| 3   | ✅     | -                 |
 
 ### Failures Encountered
+
 #### Iteration 1
+
 - ESLint: 3 errors (auto-fixed)
 - Files: src/auth.ts, src/utils.ts
 
 #### Iteration 2
+
 - TypeScript: 1 error in src/types.ts:24
 - Fixed: Added missing property to interface
 
 ### Final Result
+
 ✅ All checks passing after 3 iterations
 
 ### Commits Created
+
 - `abc1234` fix: address CI failures (attempt 1)
 - `def5678` fix: address CI failures (attempt 2)
 
 ### Pipeline Link
+
 https://github.com/user/repo/actions/runs/12345678
 ```
 
 ### Failure Report (Manual Fix Needed)
+
 ```markdown
 ## ❌ CI Failed - Manual Fix Required
 
 ### Pipeline Status
+
 - **Run ID**: 12345678
 - **Status**: Failed after 5 iterations
 - **Blocker**: E2E test failure
 
 ### Error Details
 ```
-FAIL tests/e2e/checkout.spec.ts
-  ✕ should complete checkout flow (45123 ms)
 
-  Timeout waiting for element: [data-testid="confirm-button"]
-```
+FAIL tests/e2e/checkout.spec.ts
+✕ should complete checkout flow (45123 ms)
+
+Timeout waiting for element: [data-testid="confirm-button"]
+
+````
 
 ### Analysis
 This appears to be a UI timing issue or missing element.
@@ -303,8 +324,9 @@ Cannot auto-fix E2E failures - requires manual investigation.
 ### Local Debug Command
 ```bash
 npm run test:e2e -- --headed tests/e2e/checkout.spec.ts
-```
-```
+````
+
+````
 
 ## Integration with Boris
 
@@ -326,7 +348,7 @@ npm run test:e2e -- --headed tests/e2e/checkout.spec.ts
     "notifyOnComplete": true
   }
 }
-```
+````
 
 ## Remember
 

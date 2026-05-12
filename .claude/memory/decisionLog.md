@@ -10,18 +10,23 @@
 ## [Date] - [Decision Title]
 
 ### Status
+
 Proposed / Accepted / Deprecated / Superseded by [link]
 
 ### Context
+
 What situation led to this decision? What problem are we solving?
 
 ### Decision
+
 What did we decide to do?
 
 ### Rationale
+
 Why this approach over alternatives?
 
 ### Alternatives Considered
+
 1. **Alternative A**: [Description]
    - Pros: ...
    - Cons: ...
@@ -31,11 +36,13 @@ Why this approach over alternatives?
    - Cons: ...
 
 ### Consequences
+
 - Positive: ...
 - Negative: ...
 - Risks: ...
 
 ### Related
+
 - Related decisions: [links]
 - Related issues: [links]
 ```
@@ -48,4 +55,4 @@ Why this approach over alternatives?
 
 ---
 
-*Last updated: [Date]*
+_Last updated: [Date]_

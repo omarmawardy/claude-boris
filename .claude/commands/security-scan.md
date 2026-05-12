@@ -7,30 +7,39 @@ description: Run comprehensive security scan - SAST, dependency vulnerabilities,
 ## Scanning...
 
 ### Dependency Vulnerabilities
+
 !`npm audit --json 2>/dev/null | jq -r '.metadata.vulnerabilities | to_entries | map(select(.value > 0)) | .[] | "\(.key): \(.value)"' 2>/dev/null || npm audit 2>/dev/null | head -30 || echo "Run npm install first"`
 
 ### Outdated Packages
+
 !`npm outdated 2>/dev/null | head -15 || echo ""`
 
 ### Hardcoded Secrets Check
+
 !`grep -rn --include="*.ts" --include="*.js" --include="*.tsx" --include="*.jsx" -E "(password|secret|api_key|apikey|token)['\"]?\s*[:=]\s*['\"][a-zA-Z0-9+/=]{8,}" src/ 2>/dev/null | head -10 || echo "No obvious secrets found in src/"`
 
 ### AWS Credentials
+
 !`grep -rn "AKIA[0-9A-Z]{16}" . 2>/dev/null | head -5 || echo "No AWS keys found"`
 
 ### Private Keys
+
 !`find . -name "*.pem" -o -name "*.key" 2>/dev/null | grep -v node_modules | head -5 || echo "No private key files found"`
 
 ### SQL Injection Patterns
-!`grep -rn --include="*.ts" --include="*.js" -E "query\s*\(\s*['\"\`].*\\\$\{" src/ 2>/dev/null | head -5 || echo "No obvious SQL injection patterns"`
+
+!`grep -rn --include="*.ts" --include="*.js" -E "query\s*\(\s*['\"\`].\*\\\$\{" src/ 2>/dev/null | head -5 || echo "No obvious SQL injection patterns"`
 
 ### Dangerous Functions
+
 !`grep -rn --include="*.ts" --include="*.js" -E "\beval\s*\(|new Function\s*\(" src/ 2>/dev/null | head -5 || echo "No eval/Function found"`
 
 ### XSS Vulnerabilities
+
 !`grep -rn --include="*.tsx" --include="*.jsx" "dangerouslySetInnerHTML" src/ 2>/dev/null | head -5 || echo "No dangerouslySetInnerHTML found"`
 
 ### CORS Configuration
+
 !`grep -rn --include="*.ts" --include="*.js" -E "cors.*['\"]\\*['\"]|Access-Control-Allow-Origin.*\\*" src/ 2>/dev/null | head -3 || echo "No wildcard CORS found"`
 
 ---
@@ -46,6 +55,7 @@ Use Task tool with subagent_type: security-auditor
 ```
 
 The security auditor will:
+
 1. Run comprehensive SAST scans
 2. Check all OWASP Top 10 categories
 3. Analyze authentication flows
@@ -71,6 +81,7 @@ npm audit fix --force  # Use with caution
 ### Secrets Found
 
 If secrets detected:
+
 1. **Immediately** rotate the exposed credential
 2. Remove from code
 3. Use environment variables
@@ -80,6 +91,7 @@ If secrets detected:
 ### OWASP Issues
 
 For each finding, consult:
+
 - A01: Implement proper access control
 - A02: Use strong cryptography
 - A03: Parameterize all queries
@@ -99,30 +111,37 @@ For each finding, consult:
 ## 🔒 Security Scan Report
 
 ### Summary
-| Category | Status | Count |
-|----------|--------|-------|
-| Dependencies | ⚠️ | 3 high |
-| Secrets | ✅ | 0 found |
-| SAST | ⚠️ | 2 issues |
-| Configuration | ✅ | Clean |
+
+| Category      | Status | Count    |
+| ------------- | ------ | -------- |
+| Dependencies  | ⚠️     | 3 high   |
+| Secrets       | ✅     | 0 found  |
+| SAST          | ⚠️     | 2 issues |
+| Configuration | ✅     | Clean    |
 
 ### Critical Issues
+
 🔴 **[Issue Title]**
+
 - Location: `file:line`
 - Risk: [Description]
 - Fix: [How to fix]
 
 ### High Severity
+
 🟠 **[Issue Title]**
+
 - Location: `file:line`
 - Risk: [Description]
 - Fix: [How to fix]
 
 ### Recommendations
+
 1. [Priority action]
 2. [Secondary action]
 
 ### Verdict
+
 [ ] ✅ No issues found
 [ ] ⚠️ Issues found - review recommended
 [ ] 🛑 Critical issues - fix before deploy

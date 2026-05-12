@@ -15,6 +15,7 @@ description: Push code, wait for CI, parse failures, auto-fix, and iterate until
 ## CI Loop Protocol
 
 ### Configuration
+
 - **Max Iterations**: 5
 - **Poll Interval**: 30 seconds
 - **Auto-fix**: Lint, Types (Tests require confirmation)
@@ -64,21 +65,25 @@ grep -E "Error:|BUILD FAILED" /tmp/ci-failure.log | head -10
 ### 4. Auto-Fix Attempt
 
 **Lint Errors** (auto-fixable):
+
 ```bash
 npm run lint:fix
 ```
 
 **Type Errors** (analyze and fix):
+
 - Parse error location
 - Determine fix
 - Apply carefully
 
 **Test Failures** (requires analysis):
+
 - Understand what failed
 - Determine if test or code issue
 - Fix accordingly
 
 **Build Errors** (investigate):
+
 - Usually dependency or config
 - May need manual intervention
 
@@ -97,6 +102,7 @@ Auto-fixes applied:
 ### 6. Iterate
 
 Repeat steps 1-5 until:
+
 - ✅ All checks pass, or
 - ⚠️ Max iterations reached, or
 - ❌ Non-auto-fixable issue found
@@ -105,11 +111,11 @@ Repeat steps 1-5 until:
 
 ## Iteration Tracking
 
-| Iteration | Status | Fixes Applied |
-|-----------|--------|---------------|
-| 1 | [Pass/Fail] | [What was fixed] |
-| 2 | [Pass/Fail] | [What was fixed] |
-| ... | ... | ... |
+| Iteration | Status      | Fixes Applied    |
+| --------- | ----------- | ---------------- |
+| 1         | [Pass/Fail] | [What was fixed] |
+| 2         | [Pass/Fail] | [What was fixed] |
+| ...       | ...         | ...              |
 
 ---
 
@@ -136,42 +142,54 @@ Suggestions:
 ## Output Format
 
 ### Success
+
 ```markdown
 ## ✅ CI Loop Complete
 
 ### Summary
+
 - **Iterations**: 2
 - **Duration**: 5m 30s
 - **Final Status**: All checks passing
 
 ### Fixes Applied
+
 #### Iteration 1
+
 - ESLint: Fixed 3 unused variable warnings
 - Prettier: Formatted 2 files
 
 #### Iteration 2
+
 - TypeScript: Added missing type annotation
 
 ### CI Run
+
 - **Run ID**: 12345678
 - **Link**: [URL]
 
 ### Ready for Review
+
 All checks are green. PR is ready for review.
 ```
 
 ### Failure
+
 ```markdown
 ## ❌ CI Loop: Manual Fix Required
 
 ### Summary
+
 - **Iterations**: 5 (max reached)
 - **Status**: Still failing
 
 ### Blocker
+
 E2E test failure in `checkout.spec.ts`:
 ```
+
 Timeout waiting for element [data-testid="submit-btn"]
+
 ```
 
 ### Analysis
@@ -192,6 +210,7 @@ Cannot auto-fix - requires investigation.
 ## Manual Intervention Points
 
 Some issues cannot be auto-fixed:
+
 - E2E test failures (complex state)
 - Integration test failures (external deps)
 - Configuration errors

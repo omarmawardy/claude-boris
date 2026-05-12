@@ -11,8 +11,8 @@
 ## Recent Changes
 
 | File | Change | Status |
-|------|--------|--------|
-| | | |
+| ---- | ------ | ------ |
+|      |        |        |
 
 ## Open Questions
 
@@ -30,6 +30,7 @@
 ## Files in Focus
 
 Currently working with:
+
 - `path/to/file1.ts`
 - `path/to/file2.ts`
 
@@ -39,4 +40,4 @@ Currently working with:
 
 ---
 
-*Last updated: [Timestamp]*
+_Last updated: [Timestamp]_

@@ -25,7 +25,9 @@ The Memory Bank uses structured files in `.claude/memory/`:
 ## File Purposes
 
 ### projectContext.md
+
 Permanent project understanding that rarely changes:
+
 - Project purpose and goals
 - Tech stack and architecture overview
 - Key directories and their purposes
@@ -33,7 +35,9 @@ Permanent project understanding that rarely changes:
 - External dependencies and integrations
 
 ### activeContext.md
+
 Current working state (updated frequently):
+
 - What you're currently working on
 - Recent changes made
 - Open questions or blockers
@@ -41,7 +45,9 @@ Current working state (updated frequently):
 - Files currently in focus
 
 ### progress.md
+
 Task and feature tracking:
+
 - Features in progress with completion percentage
 - Recently completed work
 - Known bugs and issues
@@ -49,28 +55,37 @@ Task and feature tracking:
 - Upcoming priorities
 
 ### decisionLog.md
+
 Architectural Decision Records (ADRs):
+
 ```markdown
 ## [Date] - [Decision Title]
 
 ### Context
+
 What situation led to this decision?
 
 ### Decision
+
 What did we decide?
 
 ### Rationale
+
 Why this approach over alternatives?
 
 ### Consequences
+
 What are the implications?
 
 ### Status
+
 Accepted / Superseded by [link]
 ```
 
 ### conventions.md
+
 Learned patterns and anti-patterns:
+
 - Code style rules beyond linting
 - File naming conventions
 - Component patterns
@@ -78,20 +93,26 @@ Learned patterns and anti-patterns:
 - Common mistakes to avoid
 
 ### sessionHistory.md
+
 Rolling log of session summaries:
+
 ```markdown
 ## [Date] [Time] - Session Summary
 
 ### What was accomplished
+
 - [Bullet points of completed work]
 
 ### Key decisions made
+
 - [Important choices]
 
 ### Context for next session
+
 - [What the next Claude needs to know]
 
 ### Open items
+
 - [Unfinished business]
 ```
 
@@ -100,6 +121,7 @@ Rolling log of session summaries:
 When starting a new session:
 
 1. **Read memory files**
+
    ```bash
    cat .claude/memory/projectContext.md
    cat .claude/memory/activeContext.md
@@ -107,6 +129,7 @@ When starting a new session:
    ```
 
 2. **Summarize to user**
+
    ```
    📚 Memory Bank Loaded
 
@@ -138,6 +161,7 @@ When ending a session (or at 75% context usage):
    - Log any architectural decisions
 
 3. **Report to user**
+
    ```
    💾 Memory Bank Updated
 
@@ -151,13 +175,17 @@ When ending a session (or at 75% context usage):
 ## Memory Maintenance
 
 ### Compaction
+
 When files get too large (>5000 tokens):
+
 - Summarize older entries
 - Archive to `.claude/memory/archive/`
 - Keep recent 30 days in active files
 
 ### Validation
+
 Periodically verify:
+
 - Files are well-formatted
 - No contradictions between files
 - Information is still accurate
@@ -167,56 +195,68 @@ Periodically verify:
 
 Memory Bank complements, not replaces, CLAUDE.md:
 
-| CLAUDE.md | Memory Bank |
-|-----------|-------------|
-| Commands and quick reference | Detailed context |
-| Code style rules | Why those rules exist |
-| Static project info | Dynamic session state |
-| Team-shared | Individual/session-specific |
+| CLAUDE.md                    | Memory Bank                 |
+| ---------------------------- | --------------------------- |
+| Commands and quick reference | Detailed context            |
+| Code style rules             | Why those rules exist       |
+| Static project info          | Dynamic session state       |
+| Team-shared                  | Individual/session-specific |
 
 ## Output Format
 
 ### Memory Load Report
+
 ```markdown
 ## 📚 Memory Bank Status
 
 ### Project Context
+
 [Brief summary from projectContext.md]
 
 ### Last Session ([Date])
+
 [Summary from sessionHistory.md]
 
 ### Current Focus
+
 [From activeContext.md]
 
 ### Progress Snapshot
+
 - ✅ [Completed items]
 - 🔄 [In progress]
 - 📋 [Queued]
 
 ### Recent Decisions
+
 [Last 2-3 from decisionLog.md]
 
 ### Active Conventions
+
 [Relevant items from conventions.md]
 ```
 
 ### Memory Save Report
+
 ```markdown
 ## 💾 Session Memory Saved
 
 ### Session Summary
+
 [What was accomplished]
 
 ### Files Updated
+
 - activeContext.md - [changes]
 - progress.md - [changes]
 - decisionLog.md - [if new decisions]
 
 ### Preserved Context
+
 [Key information for next session]
 
 ### Memory Bank Health
+
 - Total files: X
 - Total tokens: ~XXXX
 - Oldest entry: [date]

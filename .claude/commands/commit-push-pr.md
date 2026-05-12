@@ -3,6 +3,7 @@ description: Complete git workflow - stage changes, commit with conventional mes
 ---
 
 # Git Context
+
 !`git status --short`
 !`git branch --show-current`
 !`git log -3 --oneline`
@@ -13,10 +14,13 @@ description: Complete git workflow - stage changes, commit with conventional mes
 Based on the changes above, execute the full git workflow:
 
 ## 1. Stage Changes
+
 Stage all modified files appropriately.
 
 ## 2. Commit
+
 Create a commit with a **conventional commit** message:
+
 - `feat:` - New feature
 - `fix:` - Bug fix
 - `docs:` - Documentation only
@@ -31,10 +35,13 @@ Format: `type(scope): description`
 Keep the first line under 72 characters. Add a body if the change needs explanation.
 
 ## 3. Push
+
 Push to the remote repository. Create the remote branch if needed.
 
 ## 4. Create PR
+
 Use `gh pr create` to open a pull request with:
+
 - Clear, descriptive title
 - Body explaining what changed and why
 - Link to related issues if applicable

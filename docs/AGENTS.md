@@ -11,6 +11,7 @@ All specialist agents in Claude Boris.
 The master orchestrator that coordinates everything. Invoked via `/boris` command.
 
 **Specialties:**
+
 - Planning and task breakdown
 - Delegating to specialists
 - Coordinating verification
@@ -29,12 +30,14 @@ The master orchestrator that coordinates everything. Invoked via `/boris` comman
 Senior architect for design and system decisions.
 
 **Specialties:**
+
 - Design reviews
 - Architecture decisions
 - System design
 - Technical planning
 
 **When to use:**
+
 - Before major implementations
 - When evaluating approaches
 - For architectural questions
@@ -49,12 +52,14 @@ Senior architect for design and system decisions.
 Cleans up and simplifies code after implementation.
 
 **Specialties:**
+
 - Reducing complexity
 - Improving readability
 - Removing duplication
 - Modernizing patterns
 
 **When to use:**
+
 - After completing a feature
 - Before code review
 - When code feels messy
@@ -71,12 +76,14 @@ Cleans up and simplifies code after implementation.
 Generates comprehensive tests.
 
 **Specialties:**
+
 - Unit tests
 - Integration tests
 - Component tests
 - Test patterns (AAA)
 
 **When to use:**
+
 - New features need tests
 - Coverage is low
 - Critical paths need testing
@@ -91,12 +98,14 @@ Generates comprehensive tests.
 End-to-end application verification.
 
 **Specialties:**
+
 - Build verification
 - Test suite execution
 - Security checks
 - Environment validation
 
 **When to use:**
+
 - Before shipping features
 - Before merging PRs
 - After major changes
@@ -111,12 +120,14 @@ End-to-end application verification.
 Automated code review.
 
 **Specialties:**
+
 - Security review
 - Correctness checks
 - Quality assessment
 - Improvement suggestions
 
 **When to use:**
+
 - Before merging any PR
 - Self-review before requesting human review
 - Automated review in CI
@@ -130,12 +141,14 @@ Automated code review.
 Creates and updates documentation.
 
 **Specialties:**
+
 - README updates
 - API documentation
 - Component docs
 - CLAUDE.md updates
 
 **When to use:**
+
 - After significant changes
 - When adding new features
 - When docs are outdated
@@ -150,12 +163,14 @@ Creates and updates documentation.
 Debugs production issues.
 
 **Specialties:**
+
 - Incident response
 - Rapid diagnosis
 - Quick fixes
 - Post-mortems
 
 **When to use:**
+
 - Something is broken in production
 - Investigating errors
 - Performance issues
@@ -211,18 +226,22 @@ tools: Read, Edit, Bash, etc.
 You are a [role] who specializes in [domain].
 
 ## Responsibilities
+
 - Thing 1
 - Thing 2
 
 ## Process
+
 1. Step 1
 2. Step 2
 
 ## Output Format
+
 How results should look
 ```
 
 **Tips:**
+
 - Give clear role identity
 - Define specific process
 - Specify output format

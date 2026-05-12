@@ -9,6 +9,7 @@ description: Fetch a GitHub/Linear issue, understand requirements, implement the
 !`gh issue view $ARGUMENTS --json number,title,body,labels,assignees,state 2>/dev/null || echo "Provide issue number: /fix-issue 123"`
 
 ## Issue Comments (Context)
+
 !`gh issue view $ARGUMENTS --json comments -q '.comments[-3:] | .[].body' 2>/dev/null | head -30 || echo ""`
 
 ---
@@ -20,12 +21,14 @@ description: Fetch a GitHub/Linear issue, understand requirements, implement the
 Extract from the issue:
 
 **Type** (from labels):
+
 - `bug` - Something broken
 - `feature` - New functionality
 - `enhancement` - Improve existing
 - `documentation` - Docs only
 
 **Acceptance Criteria**:
+
 - Look for checkboxes
 - Look for "should" statements
 - Look for code examples
@@ -43,6 +46,7 @@ git checkout -b "issue-$ISSUE_NUM-$SLUG"
 ### 3. Plan Implementation
 
 Create a plan before coding:
+
 - What's the root cause (for bugs)?
 - What files need to change?
 - What tests are needed?
@@ -109,14 +113,17 @@ gh issue edit $ARGUMENTS --add-label "in-review"
 **Branch**: issue-[num]-[slug]
 
 ### Changes Made
+
 - [Description]
 
 ### Verification
+
 - ✅ Tests pass
 - ✅ Types check
 - ✅ Lint clean
 
 ### PR Created
+
 #[PR] - [title]
 ```
 
@@ -125,11 +132,13 @@ gh issue edit $ARGUMENTS --add-label "in-review"
 ## No Issue Number?
 
 List open issues:
+
 ```bash
 gh issue list --state open --limit 10
 ```
 
 Search issues:
+
 ```bash
 gh issue list --search "keyword"
 ```

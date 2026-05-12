@@ -3,6 +3,7 @@ description: Invoke Boris, the master orchestrator, to handle any development ta
 ---
 
 # Task Request
+
 $ARGUMENTS
 
 ---
@@ -22,6 +23,7 @@ Read your full instructions from `.claude/agents/boris.md` and execute according
 The user has requested: **$ARGUMENTS**
 
 Follow the Boris protocol:
+
 1. **Understand** - Parse what they actually want
 2. **Plan** - Create a clear plan with steps and owners
 3. **Get Approval** - Present plan and wait for confirmation

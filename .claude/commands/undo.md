@@ -5,10 +5,12 @@ description: Undo the last Claude-made change. Safely reverts commits, edits, or
 # Undo Last Change
 
 ## Current State
+
 !`git log -3 --oneline 2>/dev/null || echo "Not a git repo"`
 !`git status --short 2>/dev/null`
 
 ## Last Commit Details
+
 !`git log -1 --format="Author: %an%nMessage: %s%nDate: %ar" 2>/dev/null`
 
 ---
@@ -18,6 +20,7 @@ description: Undo the last Claude-made change. Safely reverts commits, edits, or
 ### 1. Identify What to Undo
 
 Check if last commit was made by Claude Boris:
+
 ```bash
 LAST_AUTHOR=$(git log -1 --format="%an")
 LAST_MSG=$(git log -1 --format="%s")
@@ -34,24 +37,31 @@ fi
 ### 2. Undo Options
 
 **Option A: Undo Last Commit (keep changes staged)**
+
 ```bash
 git reset --soft HEAD^
 ```
+
 Result: Commit removed, changes remain staged
 
 **Option B: Undo Last Commit (unstage changes)**
+
 ```bash
 git reset HEAD^
 ```
+
 Result: Commit removed, changes remain in working directory
 
 **Option C: Undo Last Commit (discard changes)**
+
 ```bash
 git reset --hard HEAD^
 ```
+
 ⚠️ DESTRUCTIVE: Changes are lost
 
 **Option D: Undo Multiple Commits**
+
 ```bash
 git reset --soft HEAD~N  # Where N is number of commits
 ```
@@ -61,11 +71,13 @@ git reset --soft HEAD~N  # Where N is number of commits
 Based on the analysis:
 
 If last commit was by Claude Boris:
+
 - Default to `--soft` reset (safest)
 - Keep changes for review
 - Report what was undone
 
 If last commit was NOT by Claude:
+
 - Warn user
 - Require explicit confirmation
 - Suggest alternative approaches
@@ -88,6 +100,7 @@ To continue: make desired changes and commit
 ### 5. Safety Checks
 
 Before undoing:
+
 - [ ] Verify commit is by Claude
 - [ ] Check for pushed commits (warn if pushed)
 - [ ] Offer to create backup stash
@@ -96,6 +109,7 @@ Before undoing:
 ### Undo History
 
 Track undos for reference:
+
 ```bash
 echo "$(date +%Y-%m-%d_%H:%M:%S) UNDO $(git log -1 --format='%h %s')" >> .claude/undo.log
 ```

@@ -7,17 +7,21 @@ description: Rollback to a previous checkpoint or N commits back. Restore saved 
 ## Available Checkpoints
 
 ### Stash Checkpoints
+
 !`git stash list 2>/dev/null | grep "checkpoint:" || echo "No stash checkpoints"`
 
 ### Tag Checkpoints
+
 !`git tag -l "checkpoint/*" 2>/dev/null || echo "No tag checkpoints"`
 
 ### Recent Commits
+
 !`git log --oneline -10 2>/dev/null`
 
 ---
 
 ## Rollback Target
+
 Target: $ARGUMENTS
 
 ---
@@ -28,12 +32,14 @@ Target: $ARGUMENTS
 
 **If numeric (e.g., `3`):**
 Rollback 3 commits
+
 ```bash
 git reset --soft HEAD~3
 ```
 
 **If checkpoint name (e.g., `pre-refactor`):**
 Find in stash or tags
+
 ```bash
 # Check stash
 git stash list | grep "checkpoint:$NAME"
@@ -45,6 +51,7 @@ git tag -l "checkpoint/$NAME"
 ### 2. Safety Checks
 
 Before rollback:
+
 - [ ] Current work saved? (stash or commit)
 - [ ] Not on protected branch?
 - [ ] Understand what will be lost?
@@ -58,6 +65,7 @@ git diff checkpoint/$NAME HEAD   # For named
 ### 3. Execute Rollback
 
 **From Stash Checkpoint:**
+
 ```bash
 git stash apply stash@{N}  # Where N is stash index
 # or
@@ -65,6 +73,7 @@ git stash pop stash@{N}    # Apply and remove
 ```
 
 **From Tag Checkpoint:**
+
 ```bash
 # Soft rollback (keep changes)
 git reset --soft checkpoint/$NAME
@@ -75,6 +84,7 @@ git checkout -b restored-from-$NAME
 ```
 
 **From Commit Count:**
+
 ```bash
 # Soft (keep changes staged)
 git reset --soft HEAD~$N
@@ -88,11 +98,11 @@ git reset --hard HEAD~$N
 
 ### 4. Rollback Options
 
-| Option | Command | Keeps Changes | Use When |
-|--------|---------|---------------|----------|
-| Soft | `--soft` | Staged | Review before discard |
-| Mixed | (default) | Unstaged | Selective re-commit |
-| Hard | `--hard` | No | Full revert |
+| Option | Command   | Keeps Changes | Use When              |
+| ------ | --------- | ------------- | --------------------- |
+| Soft   | `--soft`  | Staged        | Review before discard |
+| Mixed  | (default) | Unstaged      | Selective re-commit   |
+| Hard   | `--hard`  | No            | Full revert           |
 
 ### 5. Report
 
@@ -120,16 +130,19 @@ To undo rollback: git reflog
 ## Usage Examples
 
 **Rollback 2 commits:**
+
 ```
 /rollback 2
 ```
 
 **Restore checkpoint:**
+
 ```
 /rollback pre-refactor
 ```
 
 **Rollback to specific commit:**
+
 ```
 /rollback abc1234
 ```
@@ -139,6 +152,7 @@ To undo rollback: git reflog
 ## Emergency Recovery
 
 If rollback goes wrong:
+
 ```bash
 # View all history including undone
 git reflog

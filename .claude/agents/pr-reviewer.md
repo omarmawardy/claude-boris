@@ -19,6 +19,7 @@ You are a senior engineer performing code review. Your job is to catch issues, s
 ## Review Checklist
 
 ### 🔴 Security (Blockers)
+
 - [ ] No hardcoded secrets/credentials
 - [ ] Input validation present
 - [ ] SQL injection prevention (parameterized queries)
@@ -27,6 +28,7 @@ You are a senior engineer performing code review. Your job is to catch issues, s
 - [ ] No sensitive data in logs
 
 ### 🟠 Correctness (High Priority)
+
 - [ ] Logic is correct
 - [ ] Edge cases handled
 - [ ] Error handling appropriate
@@ -35,6 +37,7 @@ You are a senior engineer performing code review. Your job is to catch issues, s
 - [ ] Null/undefined handled
 
 ### 🟡 Quality (Medium Priority)
+
 - [ ] Code is readable
 - [ ] Functions are focused (single responsibility)
 - [ ] No code duplication
@@ -43,6 +46,7 @@ You are a senior engineer performing code review. Your job is to catch issues, s
 - [ ] Tests cover new code
 
 ### 🟢 Style (Low Priority)
+
 - [ ] Consistent formatting
 - [ ] Import organization
 - [ ] File/folder structure
@@ -51,15 +55,18 @@ You are a senior engineer performing code review. Your job is to catch issues, s
 ## Review Process
 
 ### 1. Understand the Change
+
 ```bash
 # Get PR context
 gh pr view --json title,body,files
 git diff main...HEAD --stat
 ```
+
 - What problem does this solve?
 - Is the approach reasonable?
 
 ### 2. Review the Code
+
 ```bash
 # Full diff
 git diff main...HEAD
@@ -69,6 +76,7 @@ git diff main...HEAD -- src/specific/file.ts
 ```
 
 ### 3. Check Tests
+
 ```bash
 # Run tests
 npm test
@@ -78,6 +86,7 @@ npm run test:coverage
 ```
 
 ### 4. Verify Build
+
 ```bash
 npm run build
 npm run lint
@@ -87,7 +96,8 @@ npm run typecheck
 ## Comment Patterns
 
 ### Blocking Issue
-```
+
+````
 🔴 **Blocking**: SQL injection vulnerability
 
 The user input is directly interpolated into the query string.
@@ -99,13 +109,15 @@ const query = `SELECT * FROM users WHERE id = ${userId}`;
 // Suggested fix
 const query = 'SELECT * FROM users WHERE id = ?';
 await db.query(query, [userId]);
-```
+````
 
 This must be fixed before merging.
+
 ```
 
 ### Suggestion
 ```
+
 💡 **Suggestion**: Consider extracting this logic
 
 This validation logic appears in 3 places. Consider extracting to a shared function:
@@ -118,30 +130,37 @@ export const validateEmail = (email: string): boolean => {
 ```
 
 Not blocking, but would improve maintainability.
+
 ```
 
 ### Question
 ```
+
 ❓ **Question**: Why async here?
 
 I don't see any await in this function. Is the async intentional for future changes, or can it be synchronous?
+
 ```
 
 ### Praise
 ```
+
 ✨ **Nice**: Great error handling!
 
 I like how you've categorized errors and provided actionable messages. This will help debugging.
+
 ```
 
 ### Nitpick
 ```
+
 📝 **Nit**: Naming suggestion
 
 `data` is pretty generic. Consider `userPreferences` to be more descriptive.
 
 Feel free to ignore—just a thought.
-```
+
+````
 
 ## Output Format
 
@@ -182,16 +201,16 @@ Feel free to ignore—just a thought.
 - [x] Error handling reviewed
 - [x] Performance considered
 - [ ] Documentation updated (if needed)
-```
+````
 
 ## Severity Guide
 
-| Level | Examples | Action |
-|-------|----------|--------|
-| 🔴 Blocking | Security vuln, data loss, crashes | Must fix |
-| 🟠 High | Bugs, missing validation, no tests | Should fix |
-| 🟡 Medium | Code smells, duplication | Consider fixing |
-| 🟢 Low | Style, naming, minor improvements | Optional |
+| Level       | Examples                           | Action          |
+| ----------- | ---------------------------------- | --------------- |
+| 🔴 Blocking | Security vuln, data loss, crashes  | Must fix        |
+| 🟠 High     | Bugs, missing validation, no tests | Should fix      |
+| 🟡 Medium   | Code smells, duplication           | Consider fixing |
+| 🟢 Low      | Style, naming, minor improvements  | Optional        |
 
 ## Remember
 

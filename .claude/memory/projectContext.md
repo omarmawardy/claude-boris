@@ -10,13 +10,13 @@
 
 ## Tech Stack
 
-| Layer | Technology | Version |
-|-------|------------|---------|
-| Language | | |
-| Framework | | |
-| Database | | |
-| Testing | | |
-| Deployment | | |
+| Layer      | Technology | Version |
+| ---------- | ---------- | ------- |
+| Language   |            |         |
+| Framework  |            |         |
+| Database   |            |         |
+| Testing    |            |         |
+| Deployment |            |         |
 
 ## Architecture Overview
 
@@ -26,30 +26,31 @@
 
 ## Key Directories
 
-| Directory | Purpose |
-|-----------|---------|
-| `src/` | Main source code |
-| `tests/` | Test files |
-| `docs/` | Documentation |
+| Directory | Purpose          |
+| --------- | ---------------- |
+| `src/`    | Main source code |
+| `tests/`  | Test files       |
+| `docs/`   | Documentation    |
 
 ## External Integrations
 
 | Service | Purpose | Config Location |
-|---------|---------|-----------------|
-| | | |
+| ------- | ------- | --------------- |
+|         |         |                 |
 
 ## Team Context
 
 | Role | Responsibility |
-|------|----------------|
-| | |
+| ---- | -------------- |
+|      |                |
 
 ## Critical Files
 
 Files that require extra care when modifying:
+
 - `src/core/` - Core business logic
 - `config/` - Application configuration
 
 ---
 
-*Last updated: [Date]*
+_Last updated: [Date]_
